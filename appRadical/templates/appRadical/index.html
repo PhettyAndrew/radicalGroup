@@ -1,0 +1,126 @@
+{% extends 'appRadical/base.html' %}
+{% block title %}Radical Group: Home{% endblock %}
+{% block content %}
+
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        {% for infoBuild in infoBuild %}
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+      </ol>
+      <div class="carousel-item text-center text-light mb-5 {% if forloop.first %} active{% endif %}">
+        <img data-toggle="tooltip" title="Click Me to View My Building Plan" style="height: 600px;" class="d-block w-100" src="{{infoBuild.buildingImage.url}}" alt="First slide">
+        <div class="carousel-caption d-none d-md-block" style="position: absolute; bottom: 10%; left: 50%; transform: translate(-50%, -50%);">
+          <a href="https://colorlib.com/preview/theme/engineers/index.html" role="button" data-target="#" style="Font-family: Jura;" type="submit" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="{{infoBuild.description}}">
+            Building Type: {{infoBuild.buildingType}}<br>
+            Building Size: {{infoBuild.size}}<br>
+            Building Plan Cost: ksh.{{infoBuild.cost}}<hr>
+            <b style="color: #000000;">Check Me Out</b>
+          </a>
+        </div>
+      </div>
+        {% endfor %}
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<div class="container-fluid" style="text-align: center; margin-top: 20px;">
+  <div class="row" style="display: inline-block;">
+    <h4 style="color: #800000; Font-family: Permanent Marker;">RADICAL GROUP</h4>
+    <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>The Unsurpassed Plan Merchandising<br> Company. We Love What We Do.</i> </h4>
+  </div>
+  <div class="row" style="margin-top: 50px; margin-left: 100px; margin-right: 100px;">
+    <div class="col-sm-6">
+      <div class="card">
+        <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/07/24/07/59/conference-2533871_960_720.jpg" style="height: 200px;">
+        <div class="card-body">
+          <h5 class="card-title" style="Font-family: Orbitron;">Team Of Professionals</h5>
+          <p class="card-text" style="Font-family: Dosis;">The Team of Professionals you need to get that dream Building Constructed.</p>
+          <a href="#" class="btn btn-primary">Check Them Out</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/07/13/23/03/planning-3536753_960_720.jpg" style="height: 200px;">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title" style="Font-family: Orbitron;">Exclusive Building Plans</h5>
+          <p class="card-text" style="Font-family: Dosis;">The most exclusive plans with the latest designs made just for you.</p>
+          <a href="#" class="btn btn-primary">Check Them Out</a>
+        </div>
+      </div>
+    </div>
+</div>
+</div>
+
+<div class="container-fluid" style="background-color: #800000; margin-top: 100px; margin-bottom: 50px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6" style="padding: 30px;">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            {% for infoBuild in infoBuild %}
+            <div class="carousel-item {% if forloop.first %} active{% endif %}">
+              <img data-toggle="tooltip" title="Click Me to View My Building Plan" class="d-block w-100" style="width: 100%; -ms-transform: skewY(20deg); transform: skewY(20deg);" src="{{infoBuild.buildingImage.url}}" alt="First slide">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6" style="padding: 30px;">
+        <h5 style="Font-family: Orbitron; color: #ffffff;">WHY CHOOSE US</h5>
+        <p style="Font-family: Dosis; color: #ffffff;"><i style="Font-family: Permanent Marker;">Radical Group </i> is a company that produces and sells drawing plans for houses and also assists the clients in coming up with the
+          bill of quantities and further willing to assign the clients the right engineers/contractors for the projects.
+          purpose of the website is to reach people who desire to build town houses and residential houses.</p>
+        <div style="Font-family: Jura; color: #ffffff; margin-top: 10px;">
+          <i class="fas fa-city fa-2x" style="color: #ffffff;"></i>
+          Building Experts: The Best in the Market
+        </div>
+        <div style="Font-family: Jura; color: #ffffff; margin-top: 20px;">
+          <i class="fas fa-tools fa-2x" style="color: #ffffff;"></i>
+          Pro-Designs and Plans: The Best You Could Ever Find
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="text-align: center; margin-top: 20px;">
+  <div class="row" style="display: inline-block; padding: 20dp;">
+    <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>The Latest Plans</i></h4>
+  </div>
+  <div class="row" style="margin-top: 20px;">
+    <div class="card mb-3" style="padding: 10px;">
+      <div class="row no-gutters">
+        <div class="col-md-4">
+          <div class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                {% for infoPlan in infoPlan %}
+                <div class="carousel-item {% if forloop.first %} active{% endif %}">
+                  <img data-toggle="tooltip" title="Click Me to View Me. I'm Prepared Just for you." class="d-block w-100" style="width: 100%;" src="{{infoPlan.image.url}}" alt="First slide">
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h5 class="card-title" style="Font-family: Orbitron;">Building Plan Drawings</h5>
+            <p class="card-text" style="Font-family: Dosis;">All plans available just for you. From Site Plans, Floor Plans, Cross-Section, Elevation i.e External
+                Elevation and Internal Elevation all the way to Landscape Plans. <i><b>We got you covered.</b></i><hr style="border-color: #ffffff;">Click on image to view.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <!--Bootstrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!--FontAwesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!--Google Fonts-->
+    <link href='https://fonts.googleapis.com/css?family=Permanent Marker' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lemonada' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Jura' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Changa' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+
+    <title>{% block title %}{% endblock %}</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!--<style>
+    body {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    #navbar {
+      overflow: hidden;
+      background-color: #333;
+    }
+
+    #navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    #navbar a:hover {
+      color: black;
+    }
+
+    .sticky {
+      position: fixed;
+      top: 0;
+      width: 100%;
+    }
+
+    .sticky + .content {
+      padding-top: 60px;
+    }
+
+</style>-->
+
+</head>
+<body>
+
+{% load crispy_forms_tags %}
+<div class="header">
+    <div class="container-fluid bg-light">
+        <nav class="navbar navbar-light bg-light" id="navbarA" >
+            <a class="navbar-brand" href="#">
+                <b style="color: #800000;">
+                    <h2 style="Font-family: Permanent Marker;">RADICAL GROUP</h2>
+                </b>
+            </a>
+          <span class="navbar-text">
+                <i class="fas fa-map-marker-alt" style="margin-right: 20px; color: #800000;">
+                    <span style="Font-family: Jura;">Location</span>
+                </i>
+                <b>
+                    <i class="fab fa-whatsapp" style="margin-right: 20px; color: #800000;">
+                        <span style="Font-family: Jura;">+2547000000</span>
+                    </i>
+                </b>
+                <i class="fas fa-envelope-open-text" style="color: #800000;">
+                    <span style="Font-family: Jura;">radicalgroup@gmail.com</span>
+                </i>
+          </span>
+        </nav>
+    </div>
+</div>
+
+<div id="navbar">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #800000;">
+  <div class="container" >
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span>
+            <i class="fas fa-bars" style="color: #ffffff;"></i>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav" style="text-align: center;">
+        <ul class="navbar-nav" style="padding: 5px;">
+          <li class="nav-item active" style="margin-right: 30px;">
+            <a class="nav-link" href="#" style="color: #ffffff; Font-family: Lemonada;">HOME <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item" style="margin-right: 30px;">
+            <a class="nav-link" href="{% url 'appRadical:about' %}" style="color: #ffffff; Font-family: Lemonada;">ABOUT US </a>
+          </li>
+          <li class="nav-item" style="margin-right: 30px;">
+            <a class="nav-link" href="#" style="color: #ffffff; Font-family: Lemonada;">BUILDING PLANS </a>
+          </li>
+          <li class="nav-item" style="margin-right: 30px;">
+            <a class="nav-link" href="#" style="color: #ffffff; Font-family: Lemonada;">CONTACT US </a>
+          </li>
+        </ul>
+      </div>
+  </div>
+</nav>
+</div>
+
+
+{% block content %}
+{% endblock %}
+
+<div class="container-fluid" style="background-color: #000000; padding: 50px; margin-top: 20px;">
+    <div class="row">
+        <div class="col-sm-3">
+            <a href="#">
+                <b style="color: #ffffff;">
+                    <h2 style="Font-family: Permanent Marker;">RADICAL GROUP</h2>
+                </b>
+            </a>
+        </div>
+        <div class="col-sm-3">
+            <ul style="color: #ffffff;">
+                <h5 style="Font-family: Changa;"><u>OUR COMPANY</u></h5>
+              <li style="Font-family: Oswald;">About</li>
+              <li style="Font-family: Oswald;">News</li>
+              <li style="Font-family: Oswald;">Team</li>
+              <li style="Font-family: Oswald;">Plans</li>
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <ul style="color: #ffffff;">
+                <h5 style="Font-family: Changa;"><u>OUR SERVICES</u></h5>
+                <li style="Font-family: Oswald;">Plan Merchandising</li>
+              <li style="Font-family: Oswald;">Engineering</li>
+            </ul>
+        </div>
+        <div class="col-sm-3">
+            <ul style="color: #ffffff;">
+                <h5 style="Font-family: Changa;"><u>FOLLOW US</u></h5>
+              <li style="Font-family: Oswald;">Facebook</li>
+              <li style="Font-family: Oswald;">Twitter</li>
+              <li style="Font-family: Oswald;">YouTube</li>
+            </ul>
+        </div>
+    </div>
+
+    <!--<div class="row">
+        <form method="post" enctype="multipart/form-data">
+            <fieldset>
+                {% csrf_token %}
+                {{ form|crispy }}
+            </fieldset>
+            <button type="submit" class="btn btn-success">Donate</button>
+          </form>
+    </div>-->
+</div>
+
+<script>
+window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("navbar");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+  } else {
+    navbar.classList.remove("sticky");
+  }
+}
+</script>
+
+</body>
+</html>
