@@ -40,7 +40,6 @@ def building_details(request, building_id):
     building = get_object_or_404(Building, pk=building_id)
     context = {
         'building': building,
-        'plan': plan,
     }
     return render(request, 'appRadical/building_details.html', context)
 
@@ -50,7 +49,15 @@ def contact(request):
     if form.is_valid():
         form.save()
         return render(request, 'appRadical/index.html')
-    return render(request, 'appRadical/contact.html',{'form':form})
+    return render(request, 'appRadical/contact.html', {'form': form})
+
+
+def purchase(request, purchase_id):
+    building = get_object_or_404(Building, pk=purchase_id)
+    context = {
+        'building': building,
+    }
+    return render(request, 'appRadical/purchase.html', context)
 
 # def subscribe(request):
 #     form = SubscriptionForm(request.POST or None)

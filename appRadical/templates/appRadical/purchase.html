@@ -1,0 +1,18 @@
+{% extends 'appRadical/base.html' %}
+{% block title %}Radical Group: Purchase Building Plan - {{building.buildingType}} {{building.buildingCode}}{% endblock %}
+{% block content %}
+<div class="image" style="position: relative; text-align: center;">
+    <img src="https://cdn.pixabay.com/photo/2015/12/07/10/58/building-1080592_960_720.jpg" style="width: 100%; height: 500px;">
+    <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ffffff; animation-name: current_page; animation-duration: 3s;">
+        <h1 style="Font-family: Orbitron;">Purchase Building Plan</h1>
+        <p style="Font-family: Dosis;"><u>Home</u> / <u>Building Plans</u> / Purchase Building Plan - {{building.buildingType}} {{building.buildingCode}}</p>
+    </div>
+</div>
+
+<div class="container" style="text-align: center; margin-top: 20px;">
+    <div class="row" style="display: inline-block;">
+        <h4 style="color: #800000; Font-family: Orbitron;">CONTACT US AND NEWSLETTER SUBSCRIPTION</h4>
+        <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>You are the Reason we Exist.<br> We <b>Adore our Clients.</b></i> </h4>
+    </div>
+</div>
+{% endblock %}
