@@ -14,10 +14,19 @@ class Info(models.Model):
 
 
 class Subscribe(models.Model):
-    email = models.CharField(max_length=50)
+    email = models.EmailField(max_length=50)
 
     def __str__(self):
         return self.email
+
+
+class Contact(models.Model):
+    full_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    message = models.TextField()
+
+    def __str__(self):
+        return self.full_name
 
 
 # Team

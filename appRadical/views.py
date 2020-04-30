@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Info, Subscribe, Building, Plan, Team
 import random
-from .forms import SubscriptionForm
+from .forms import SubscriptionForm, ContactForm
 from django.http import HttpResponse
 
 
@@ -43,6 +43,14 @@ def building_details(request, building_id):
         'plan': plan,
     }
     return render(request, 'appRadical/building_details.html', context)
+
+
+def contact(request):
+    form = ContactForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return render(request, 'appRadical/index.html')
+    return render(request, 'appRadical/contact.html',{'form':form})
 
 # def subscribe(request):
 #     form = SubscriptionForm(request.POST or None)
