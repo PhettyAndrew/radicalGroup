@@ -2,7 +2,6 @@
 {% block title %}Radical Group: Home{% endblock %}
 {% block content %}
 
-
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         {% for infoBuild in infoBuild %}
@@ -10,9 +9,11 @@
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
       </ol>
       <div class="carousel-item text-center text-light mb-5 {% if forloop.first %} active{% endif %}">
-        <img data-toggle="tooltip" title="Click Me to View My Building Plan" style="height: 600px;" class="d-block w-100" src="{{infoBuild.buildingImage.url}}" alt="First slide">
+        <a href="{% url 'appRadical:building_details' infoBuild.id %}">
+          <img data-toggle="tooltip" title="Click Me to View My Building Plan" style="height: 600px;" class="d-block w-100" src="{{infoBuild.buildingImage.url}}" alt="First slide">
+        </a>
         <div class="carousel-caption d-none d-md-block" style="position: absolute; bottom: 10%; left: 50%; transform: translate(-50%, -50%);">
-          <a href="https://colorlib.com/preview/theme/engineers/index.html" role="button" data-target="#" style="Font-family: Jura;" type="submit" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="{{infoBuild.description}}">
+          <a href="{% url 'appRadical:building_details' infoBuild.id %}" role="button" data-target="#" style="Font-family: Jura;" type="submit" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="{{infoBuild.description}}">
             Building Type: {{infoBuild.buildingType}}<br>
             Building Size: {{infoBuild.size}}<br>
             Building Plan Cost: ksh.{{infoBuild.cost}}<hr>
@@ -38,23 +39,23 @@
     <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>The Unsurpassed Plan Merchandising<br> Company. We Love What We Do.</i> </h4>
   </div>
   <div class="row" style="margin-top: 50px; margin-left: 100px; margin-right: 100px;">
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin-top: 10px;">
       <div class="card">
         <img class="card-img-top" src="https://cdn.pixabay.com/photo/2017/07/24/07/59/conference-2533871_960_720.jpg" style="height: 200px;">
         <div class="card-body">
           <h5 class="card-title" style="Font-family: Orbitron;">Team Of Professionals</h5>
           <p class="card-text" style="Font-family: Dosis;">The Team of Professionals you need to get that dream Building Constructed.</p>
-          <a href="#" class="btn btn-primary">Check Them Out</a>
+          <a href="{% url 'appRadical:about' %}" class="btn btn-primary">Check Them Out</a>
         </div>
       </div>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-6" style="margin-top: 10px;">
       <img class="card-img-top" src="https://cdn.pixabay.com/photo/2018/07/13/23/03/planning-3536753_960_720.jpg" style="height: 200px;">
       <div class="card">
         <div class="card-body">
           <h5 class="card-title" style="Font-family: Orbitron;">Exclusive Building Plans</h5>
           <p class="card-text" style="Font-family: Dosis;">The most exclusive plans with the latest designs made just for you.</p>
-          <a href="#" class="btn btn-primary">Check Them Out</a>
+          <a href="{% url 'appRadical:building' %}" class="btn btn-primary">Check Them Out</a>
         </div>
       </div>
     </div>
@@ -69,7 +70,9 @@
           <div class="carousel-inner">
             {% for infoBuild in infoBuild %}
             <div class="carousel-item {% if forloop.first %} active{% endif %}">
-              <img data-toggle="tooltip" title="Click Me to View My Building Plan" class="d-block w-100" style="width: 100%; -ms-transform: skewY(20deg); transform: skewY(20deg);" src="{{infoBuild.buildingImage.url}}" alt="First slide">
+              <a href="{% url 'appRadical:building_details' infoBuild.id %}">
+                <img data-toggle="tooltip" title="Click Me to View My Building Plan" class="d-block w-100" style="width: 100%; -ms-transform: skewY(20deg); transform: skewY(20deg);" src="{{infoBuild.buildingImage.url}}" alt="First slide">
+              </a>
             </div>
             {% endfor %}
           </div>
@@ -105,7 +108,9 @@
               <div class="carousel-inner">
                 {% for infoPlan in infoPlan %}
                 <div class="carousel-item {% if forloop.first %} active{% endif %}">
-                  <img data-toggle="tooltip" title="Click Me to View Me. I'm Prepared Just for you." class="d-block w-100" style="width: 100%;" src="{{infoPlan.image.url}}" alt="First slide">
+                  <a href="{% url 'appRadical:building_details' infoPlan.id %}">
+                    <img data-toggle="tooltip" title="Click Me to View Me. I'm Prepared Just for you." class="d-block w-100" style="width: 100%;" src="{{infoPlan.site_planImage.url}}" alt="First slide">
+                  </a>
                 </div>
                 {% endfor %}
               </div>
@@ -123,4 +128,5 @@
     </div>
   </div>
 </div>
+
 {% endblock %}

@@ -22,6 +22,7 @@ class Subscribe(models.Model):
 
 # Team
 class Team(models.Model):
+    photo = models.ImageField()
     name = models.CharField(max_length=40)
     title = models.CharField(max_length=40)
     facebook_link = models.URLField()
@@ -39,13 +40,13 @@ BUILDING_TYPE = (
 
 # Building
 class Building(models.Model):
-    buildingCode = models.IntegerField(primary_key=True)
+    buildingCode = models.IntegerField()
     buildingType = models.CharField(choices=BUILDING_TYPE, default='unknown', max_length=10)
     buildingImage = models.ImageField()
     cost = models.IntegerField()
     description = models.TextField()
-    size = models.CharField(null=True, max_length=10)
-    date = models.DateField(auto_now_add=True, null=True)
+    size = models.CharField(max_length=10)
+    date = models.DateField(auto_now_add=True)
 
     def __int__(self):
         return self.buildingCode
@@ -71,7 +72,14 @@ class Components(models.Model):
 class Plan(models.Model):
     building = models.ForeignKey(Building, on_delete=models.CASCADE)
     planName = models.CharField(max_length=15)
-    image = models.ImageField()
+    site_planImage = models.ImageField()
+    floor_planImage = models.ImageField(null=True)
+    cross_sectionImage = models.ImageField(null=True)
+    external_elevationImage = models.ImageField(null=True)
+    internal_elevationImage = models.ImageField(null=True)
+    electrical_drawingImage = models.ImageField(null=True)
+    plumbing_drawingImage = models.ImageField(null=True)
+    landscape_planImage = models.ImageField(null=True)
     description = models.TextField()
 
     def __str__(self):

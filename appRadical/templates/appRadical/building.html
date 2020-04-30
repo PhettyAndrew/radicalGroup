@@ -1,0 +1,37 @@
+{% extends 'appRadical/base.html' %}
+{% block title %}Radical Group: Building Plans{% endblock %}
+{% block content %}
+<div class="image" style="position: relative; text-align: center;">
+    <img src="https://cdn.pixabay.com/photo/2015/12/07/10/58/building-1080592_960_720.jpg" style="width: 100%; height: 500px;">
+    <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ffffff; animation-name: current_page; animation-duration: 3s;">
+        <h1 style="Font-family: Orbitron;">Building Plans</h1>
+        <p style="Font-family: Dosis;"><u>Home</u> / Building Plans</p>
+    </div>
+</div>
+
+<div class="container" style="text-align: center; margin-top: 20px;">
+    <div class="row" style="display: inline-block;">
+        <h4 style="color: #800000; Font-family: Orbitron;">BUILDING DRAWING PLANS</h4>
+        <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>The <b>Best Plans and Designs</b></i> </h4>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        {% for infoBuild in infoBuild %}
+        <div class="col-sm-4">
+            <div class="card" style="margin-top: 10px;">
+              <a href="{% url 'appRadical:building_details' infoBuild.id %}">
+                  <img  style="width: 100%; height: 300px;" src="{{infoBuild.buildingImage.url}}" class="card-img" alt="...">
+              </a>
+            </div>
+
+            <a href="{% url 'appRadical:building_details' infoBuild.id %}" style="Font-family: Lemonada; margin-top: 10px;">{{infoBuild.buildingType}}</a>
+            <h5 style="Font-family: Jura; margin-top: 10px;">{{infoBuild.size}}</h5>
+            <p style="Font-family: Dosis; color: #800000;">ksh.{{infoBuild.cost}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

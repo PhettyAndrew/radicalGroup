@@ -1,0 +1,150 @@
+{% extends 'appRadical/base.html' %}
+{% block title %}Radical Group: Building Plans - {{building.buildingType}} {{building.buildingCode}}{% endblock %}
+{% block content %}
+<div class="image" style="position: relative; text-align: center;">
+    <img src="https://cdn.pixabay.com/photo/2015/12/07/10/58/building-1080592_960_720.jpg" style="width: 100%; height: 500px;">
+    <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ffffff; animation-name: current_page; animation-duration: 3s;">
+        <h1 style="Font-family: Orbitron;">Building Plans</h1>
+        <p style="Font-family: Dosis;"><u>Home</u> / <u>Building Plans</u> / {{building.buildingType}} - {{building.buildingCode}}</p>
+    </div>
+</div>
+
+<div class="container" style="text-align: center; margin-top: 20px;">
+    <div class="row" style="display: inline-block;">
+        <h4 style="color: #800000; Font-family: Orbitron;">BUILDING DRAWING PLANS</h4>
+        <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>The <b>Best Plans and Designs</b></i> </h4>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 50px; margin-bottom: 50px;">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card" style="width: 100%;">
+              <img src="{{building.buildingImage.url}}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title" style="Font-family: Oswald;">{{building.buildingType}}</h5>
+                <p class="card-text" style="Font-family: Dosis;">{{building.description}}</p>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <ul class="nav nav-pills" style="border-color: #8B0000;">
+                <li class="nav-item">
+                    <a class="nav-link" style="Font-family: Lemonada;">Building Drawing Plans for Building {{building.buildingCode}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" style="Font-family: Lemonada;" href="#" >Purchase</a>
+                </li>
+            </ul>
+            {% if building.plan_set %}
+                  {% for build in building.plan_set.all %}
+                    <div class="card mb-3" style="max-width: 100%; margin-top: 30px;">
+                      <div class="row no-gutters">
+                        <div class="col-sm-8">
+                          <div class="card-body">
+                            <h5 class="card-title" style="Font-family: Orbitron;">Site Plan</h5>
+                            <p class="card-text" style="Font-family: Dosis;">Site plan is comprehensive detailed drawing of the building or an apartment representing whole plan of a building. It shows property boundaries and means of access to the site, and nearby structures if they are relevant to the design.</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <img style="padding: 5px;" src="{{build.site_planImage.url}}" class="card-img" alt="...">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mb-3" style="max-width: 100%; margin-top: 30px;">
+                      <div class="row no-gutters">
+                        <div class="col-sm-8">
+                          <div class="card-body">
+                            <h5 class="card-title" style="Font-family: Orbitron;">Floor Plan</h5>
+                            <p class="card-text" style="Font-family: Dosis;">Floor plan is the most fundamental architectural diagram, a view from above showing the arrangement of spaces in building in the same way as a map, but showing the arrangement at a particular level of a building.</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <img style="padding: 5px;" src="{{build.floor_planImage.url}}" class="card-img" alt="...Not Uploaded">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mb-3" style="max-width: 100%; margin-top: 30px;">
+                      <div class="row no-gutters">
+                        <div class="col-sm-8">
+                          <div class="card-body">
+                            <h5 class="card-title" style="Font-family: Orbitron;">Cross Section</h5>
+                            <p class="card-text" style="Font-family: Dosis;">Cross section is vertical cut section of any building which shows the details of dimension, thickness of any component of a building. It also represents the sill height, lintel height, floor height and other minute details of a structure.</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <img style="padding: 5px;" src="{{build.cross_sectionImage.url}}" class="card-img" alt="...Not Uploaded">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mb-3" style="max-width: 100%; margin-top: 30px;">
+                      <div class="row no-gutters">
+                        <div class="col-sm-8">
+                          <div class="card-body">
+                            <h5 class="card-title" style="Font-family: Orbitron;">External Elevation</h5>
+                            <p class="card-text" style="Font-family: Dosis;">Exterior elevation is the outside representation of a building. It consists of details of type of finish, floor height and projections if any. Exterior elevations can be 2D or 3D drawings.</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <img style="padding: 5px;" src="{{build.external_elevationImage.url}}" class="card-img" alt="...Not Uploaded">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mb-3" style="max-width: 100%; margin-top: 30px;">
+                      <div class="row no-gutters">
+                        <div class="col-sm-8">
+                          <div class="card-body">
+                            <h5 class="card-title" style="Font-family: Orbitron;">Internal Elevation</h5>
+                            <p class="card-text" style="Font-family: Dosis;">Usually interior elevations are made in 3D that show your furniture in your space. The inner elevation effects a lot on the living condition and peaceful mind. These days great importance is given to interior elevation than exterior elevation. Interior elevation has the paint colour, lightning types, furniture design and floor patterns.</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <img style="padding: 5px;" src="{{build.internal_elevationImage.url}}" class="card-img" alt="...Not Uploaded">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mb-3" style="max-width: 100%; margin-top: 30px;">
+                      <div class="row no-gutters">
+                        <div class="col-sm-8">
+                          <div class="card-body">
+                            <h5 class="card-title" style="Font-family: Orbitron;">Electrical Drawing</h5>
+                            <p class="card-text" style="Font-family: Dosis;">Electrical drawing represent the details of electrical fixtures, location of switches, fan, light and others. It also represents the load calculation, tapping for electricity, wiring path and other interventions such as AC and UPS and its components..</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <img style="padding: 5px;" src="{{build.landscape_planImage.url}}" class="card-img" alt="...Not Uploaded">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mb-3" style="max-width: 100%; margin-top: 30px;">
+                      <div class="row no-gutters">
+                        <div class="col-sm-8">
+                          <div class="card-body">
+                            <h5 class="card-title" style="Font-family: Orbitron;">Plumbing Drawing</h5>
+                            <p class="card-text" style="Font-family: Dosis;">Plumbing drawings give the location of sanitary, piping for water supply system, fixture, and the process to connect every fixture.</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <img style="padding: 5px;" src="{{build.landscape_planImage.url}}" class="card-img" alt="...Not Uploaded">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card mb-3" style="max-width: 100%; margin-top: 30px;">
+                      <div class="row no-gutters">
+                        <div class="col-sm-8">
+                          <div class="card-body">
+                            <h5 class="card-title" style="Font-family: Orbitron;">Landscape Plans</h5>
+                            <p class="card-text" style="Font-family: Dosis;">On landscape plans, you’ll see everything from flowers to sidewalks and lawn decorations to fountains. It majorly consists of sidewalks, plantations and other decorative features that can enhance the living area.</p>
+                          </div>
+                        </div>
+                        <div class="col-sm-4">
+                          <img style="padding: 5px;" src="{{build.landscape_planImage.url}}" class="card-img" alt="...Not Uploaded">
+                        </div>
+                      </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

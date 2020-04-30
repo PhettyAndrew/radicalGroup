@@ -1,4 +1,81 @@
 {% extends 'appRadical/base.html' %}
 {% block title %}Radical Group: About Us{% endblock %}
 {% block content %}
+<div class="image" style="position: relative; text-align: center;">
+    <img src="https://cdn.pixabay.com/photo/2015/12/07/10/58/building-1080592_960_720.jpg" style="width: 100%; height: 500px;">
+    <div class="centered" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #ffffff; animation-name: current_page; animation-duration: 3s;">
+        <h1 style="Font-family: Orbitron;">About Us</h1>
+        <p style="Font-family: Dosis;"><u>Home</u> / About Us</p>
+    </div>
+</div>
+
+<div class="container" style="text-align: center; margin-top: 20px;">
+    <div class="row" style="display: inline-block;">
+        <h4 style="color: #800000; Font-family: Orbitron;">OUR TEAM</h4>
+        <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>We have a <b>Good and Expert Team</b></i> </h4>
+    </div>
+</div>
+
+<div class="container" style="margin-top: 50px;">
+    <div class="row">
+        {% for infoTeam in infoTeam %}
+        <div class="col-sm-4">
+            <div class="card" style="margin-top: 10px;">
+              <img  style="width: 100%; height: 300px;" src="{{infoTeam.photo.url}}" class="card-img" alt="...">
+              <div class="card-img-overlay" style="">
+                <div class="row" style="width: 50%;">
+                    <a href="{{infoTeam.facebook_link}}" class="btn" >
+                        <i class="fab fa-facebook-f" style="color: #800000;"></i>
+                    </a>
+                </div>
+                <div class="row" style="width: 50%;">
+                    <a href="{{infoTeam.twitter_link}}" class="btn" >
+                        <i class="fab fa-twitter" style="color: #800000;"></i>
+                    </a>
+                </div>
+                <div class="row" style="width: 50%;">
+                    <a href="{{infoTeam.linkedIn_link}}" class="btn" >
+                        <i class="fab fa-linkedin" style="color: #800000;"></i>
+                    </a>
+                </div>
+              </div>
+            </div>
+            <h5 style="Font-family: Jura; margin-top: 10px;">{{infoTeam.name}}</h5>
+            <p style="Font-family: Dosis; color: #800000;">{{infoTeam.title}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container-fluid" style="background-color: #800000; margin-top: 100px;">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6" style="padding: 30px;">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            {% for infoBuild in infoBuild %}
+            <div class="carousel-item {% if forloop.first %} active{% endif %}">
+              <img data-toggle="tooltip" title="Click Me to View My Building Plan" class="d-block w-100" style="width: 100%; -ms-transform: skewY(20deg); transform: skewY(20deg);" src="{{infoBuild.buildingImage.url}}" alt="First slide">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6" style="padding: 30px;">
+        <h5 style="Font-family: Orbitron; color: #ffffff;">WHY CHOOSE US</h5>
+        <p style="Font-family: Dosis; color: #ffffff;"><i style="Font-family: Permanent Marker;">Radical Group </i> is a company that produces and sells drawing plans for houses and also assists the clients in coming up with the
+          bill of quantities and further willing to assign the clients the right engineers/contractors for the projects.
+          purpose of the website is to reach people who desire to build town houses and residential houses.</p>
+        <div style="Font-family: Jura; color: #ffffff; margin-top: 10px;">
+          <i class="fas fa-city fa-2x" style="color: #ffffff;"></i>
+          Building Experts: The Best in the Market
+        </div>
+        <div style="Font-family: Jura; color: #ffffff; margin-top: 20px;">
+          <i class="fas fa-tools fa-2x" style="color: #ffffff;"></i>
+          Pro-Designs and Plans: The Best You Could Ever Find
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
