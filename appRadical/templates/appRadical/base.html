@@ -151,38 +151,113 @@
         <div class="col-sm-3">
             <ul style="color: #ffffff;">
                 <h5 style="Font-family: Changa;"><u>OUR COMPANY</u></h5>
-              <li style="Font-family: Oswald;"><a href="{% url 'appRadical:about' %}">About</a></li>
-                <li style="Font-family: Oswald;"><a href="#">News</a></li>
-                <li style="Font-family: Oswald;"><a href="{% url 'appRadical:about' %}">Team</a></li>
-                <li style="Font-family: Oswald;"><a href="{% url 'appRadical:building' %}">Plans</a></li>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-home"></i>
+                    <a href="{% url 'appRadical:index' %}">Home</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-info-circle"></i>
+                    <a href="{% url 'appRadical:about' %}">About</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-newspaper"></i>
+                    <a href="#">News</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-users"></i>
+                    <a href="{% url 'appRadical:about' %}">Team</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-scroll"></i>
+                    <a href="{% url 'appRadical:building' %}">Plans</a>
+                </li>
             </ul>
         </div>
         <div class="col-sm-3">
             <ul style="color: #ffffff;">
                 <h5 style="Font-family: Changa;"><u>OUR SERVICES</u></h5>
-                <li style="Font-family: Oswald;">Plan Merchandising</li>
-              <li style="Font-family: Oswald;">Engineering</li>
+                <li style="Font-family: Oswald;">
+                    <i class="fas fa-money-check-alt"></i>
+                    <a href="{% url 'appRadical:building' %}">Plan Merchandising</a>
+                </li>
+              <li style="Font-family: Oswald;">
+                  <i class="fas fa-cogs"></i>
+                  <a href="{% url 'appRadical:about' %}">Engineering</a>
+              </li>
             </ul>
         </div>
         <div class="col-sm-3">
             <ul style="color: #ffffff;">
                 <h5 style="Font-family: Changa;"><u>FOLLOW US</u></h5>
-              <li style="Font-family: Oswald;">Facebook</li>
-              <li style="Font-family: Oswald;">Twitter</li>
-              <li style="Font-family: Oswald;">YouTube</li>
+                <li style="Font-family: Oswald;">
+                    <i class="fab fa-facebook-f"></i>
+                    <a href="#">Facebook</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fab fa-twitter"></i>
+                    <a href="#">Twitter</a>
+                </li>
+                <li style="Font-family: Oswald;">
+                    <i class="fab fa-youtube"></i>
+                    <a href="#">YouTube</a>
+                </li>
             </ul>
         </div>
     </div>
 
-    <!--<div class="row">
-        <form method="post" enctype="multipart/form-data">
-            <fieldset>
-                {% csrf_token %}
-                {{ form|crispy }}
-            </fieldset>
-            <button type="submit" class="btn btn-success">Donate</button>
-          </form>
-    </div>-->
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8" style="text-align:center;">
+            <img class="rounded-circle mx-auto img-fluid" src="https://sigtunafoundation.pythonanywhere.com/media/loadNutlogo.png" style="max-width: 5%;">
+            <h6 style="Font-family: Oswald;"><a href="https://onyangoabila.pythonanywhere.com">loadNut Studio Developers</a></h6>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-2">
+            <a href="#modalCrown" data-toggle="modal">
+                <i class="fas fa-medal" style="color: #ffffff;"></i>
+            </a>
+        </div>
+        <div class="col-sm-8" style="display: inline-block; text-align: center;">
+            <a class="w3-large center" href="mailto:loadnut7@gmail.com" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-google-plus" style="color: #FFFFFF; padding: 5px;"></i>
+            </a>
+            <a class="w3-large center" href="https://www.youtube.com/channel/UCTSCmMp82VkZhy8C8H-jpyg" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-youtube" style="color: #FFFFFF; padding: 5px;"></i>
+            </a>
+            <a class="w3-large center" href="https://www.facebook.com/andrew.abila.5" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-facebook" style="color: #FFFFFF; padding: 5px;"></i>
+            </a>
+            <a class="w3-large center" href="https://ke.linkedin.com/in/andrew-abila-274330184" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-linkedin" style="color: #FFFFFF; padding: 5px;"></i>
+            </a>
+            <a class="w3-large center" href="https://github.com/PhettyAndrew" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-github" style="color: #FFFFFF; padding: 5px;"></i>
+            </a>
+            <a class="w3-large center" href="#" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-twitter" style="color: #FFFFFF; padding: 5px;"></i>
+            </a>
+            <a class="w3-large" href="#" target="_blank" style="display: inline-block; size: 10px;">
+                <i class="fab fa-skype" style="color: #FFFFFF; padding: 5px;"></i>
+            </a>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+</div>
+
+<div class="modal fade modalHistory" id="modalCrown" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-md" role="document">
+    <div class="modal-content">
+      <div class="header">
+          <img src="https://sigtunafoundation.pythonanywhere.com/media/loadNutlogo.png" style="max-width: 20%;">
+      </div>
+      <div class="modal-body">
+        <p style="Font-family: Lemonada;">None of this would be possible without the grace and
+            blessing of our Lord Jesus Christ to whom be all praise and glory!</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>

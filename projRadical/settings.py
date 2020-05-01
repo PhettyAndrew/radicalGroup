@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # registering appRadical
-    'appRadical',
+    'appRadical.apps.AppradicalConfig',
 
     # CRISPY_FORM
     'crispy_forms',

@@ -93,3 +93,13 @@ class Plan(models.Model):
 
     def __str__(self):
         return self.planName
+
+
+class Purchase(models.Model):
+    client_name = models.CharField(max_length=40)
+    phone_number = models.IntegerField()
+    email = models.EmailField(max_length=40)
+    date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.client_name

@@ -11,8 +11,31 @@
 
 <div class="container" style="text-align: center; margin-top: 20px;">
     <div class="row" style="display: inline-block;">
-        <h4 style="color: #800000; Font-family: Orbitron;">CONTACT US AND NEWSLETTER SUBSCRIPTION</h4>
-        <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>You are the Reason we Exist.<br> We <b>Adore our Clients.</b></i> </h4>
+        <h4 style="color: #800000; Font-family: Orbitron;">PURCHASE BUILDING PLAN</h4>
+        <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>Thank you for choosing<br><b style="Font-family: Permanent Marker;">Radical Group</b>.</i> </h4>
+    </div>
+</div>
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6" style="border-right: solid; border-color: #800000; margin-top: 50px; margin-bottom: 50px;">
+          <form method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQEj-M_ylL2tK8U4gMU2hG30R33L_ozTPW8mfMqH8i3N_XH_TTH&usqp=CAU" style="max-width: 30%; max-height: auto;">
+                    <p><small style="Font-family: Dosis; color: #800000;">*Pay with Mpesa*</small></p>
+                </legend>
+                {% csrf_token %}
+                {{ form|crispy }}
+            </fieldset>
+            <button type="submit" class="btn btn-success">Purchase</button>
+          </form>
+        </div>
+        <div class="col-sm-6" style="margin-top: 50px; margin-bottom: 50px;">
+            <img src="https://www.paypalobjects.com/webstatic/mktg/logo/AM_mc_vs_dc_ae.jpg" style="max-width: 30%; max-height: auto; margin-top: 20px;">
+        </div>
     </div>
 </div>
 {% endblock %}
