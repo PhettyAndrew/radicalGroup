@@ -11,4 +11,7 @@ urlpatterns = [
     path('contact_us', views.contact, name='contact'),
     path('access/token', views.getAccessToken, name='get_mpesa_access_token'),
     path('building_plan/online/lipa:<int:purchase_id>/purchase/', views.lipa_na_mpesa_online, name='purchase'),
+    path('registration', views.register, name='register'),
+    path('login', views.login_user, name='login'),
+    path('logout', views.logout_user, name='logout'),
 ]

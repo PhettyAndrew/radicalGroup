@@ -1,11 +1,6 @@
 from django import forms
-from .models import Subscribe, Contact, Purchase
-
-
-class SubscriptionForm(forms.ModelForm):
-    class Meta:
-        model = Subscribe
-        fields = ['email']
+from .models import Contact, Purchase
+from django.contrib.auth.models import User
 
 
 class ContactForm(forms.ModelForm):
@@ -28,3 +23,11 @@ class PurchaseForm(forms.ModelForm):
             'email': forms.TextInput(attrs={'placeholder': 'Email Address'}),
         }
         fields = ['client_name', 'phone_number', 'email']
+
+
+class FormUser(forms.ModelForm):
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password']

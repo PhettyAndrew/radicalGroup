@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Info, Subscribe, Building, Plan, Team
-import random
-from .forms import SubscriptionForm, ContactForm, PurchaseForm
-from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Building, Plan, Team
+from .forms import FormUser, ContactForm, PurchaseForm
+from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth.decorators import login_required
 
 # mpesa_api imports
 from django.http import HttpResponse
@@ -13,6 +13,35 @@ from .mpesa_credentials import MpesaAccessToken, LipanaMpesaPpassword
 
 
 # Create your views here.
+
+def register(request):
+    form = FormUser(request.POST or None)
+    if form.is_valid():
+        username = form.cleaned_data['username']
+        password = form.cleaned_data['password']
+        regist = form.save(commit=False)
+        regist.set_password(password)
+        regist.save()
+        authentication = authenticate(username=username, password=password)
+        logout(authentication)
+        return redirect('appRadical:index')
+    return render(request, 'appRadical/register.html', {'form': form})
+
+
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(username=username, password=password)
+        login(request, user)
+        return redirect('appRadical:index')
+    return render(request, 'appRadical/login.html')
+
+
+def logout_user(request):
+    logout(request)
+    return redirect('appRadical:login')
+
 
 def index(request):
     infoBuild = Building.objects.order_by("description")
@@ -59,14 +88,6 @@ def contact(request):
     return render(request, 'appRadical/contact.html', {'form': form})
 
 
-def purchase(request, purchase_id):
-    building = get_object_or_404(Building, pk=purchase_id)
-    context = {
-        'building': building,
-    }
-    return HttpResponse(building.cost)
-
-
 def getAccessToken(request):
     consumer_key = 'rbGmhzzotDBUGqyNdfD4l5LinbJhuoyq'
     consumer_secret = 'qOCY6GDdfBk7vD5I'
@@ -77,6 +98,7 @@ def getAccessToken(request):
     return HttpResponse(validated_mpesa_access_token)
 
 
+@login_required(login_url='appRadical:login')
 def lipa_na_mpesa_online(request, purchase_id):
     building = get_object_or_404(Building, pk=purchase_id)
     if request.method == 'POST':
@@ -92,9 +114,10 @@ def lipa_na_mpesa_online(request, purchase_id):
                 "Timestamp": LipanaMpesaPpassword.lipa_time,
                 "TransactionType": "CustomerPayBillOnline",
                 "Amount": building.cost,
-                "PartyA": 254+form.cleaned_data['phone_number'],  # replace with your phone number to get stk push
+                "PartyA": 254 + form.cleaned_data['phone_number'],  # replace with your phone number to get stk push
                 "PartyB": LipanaMpesaPpassword.Business_short_code,
-                "PhoneNumber": 254+form.cleaned_data['phone_number'],  # replace with your phone number to get stk push
+                "PhoneNumber": 254 + form.cleaned_data['phone_number'],
+                # replace with your phone number to get stk push
                 "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
                 "AccountReference": "Radical Group",
                 "TransactionDesc": "Building Plan Purchase."
@@ -103,7 +126,11 @@ def lipa_na_mpesa_online(request, purchase_id):
             return HttpResponse("Success")
     else:
         form = PurchaseForm()
-    return render(request, 'appRadical/purchase.html', {'form': form})
+    context = {
+        'form': form,
+        'building': building
+    }
+    return render(request, 'appRadical/purchase.html', context)
 
 # def subscribe(request):
 #     form = SubscriptionForm(request.POST or None)

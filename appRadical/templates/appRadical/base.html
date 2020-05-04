@@ -21,6 +21,7 @@
     <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Dosis' rel='stylesheet'>
     <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Lora' rel='stylesheet'>
 
     <title>{% block title %}{% endblock %}</title>
 
@@ -122,6 +123,23 @@
           <li class="nav-item" style="margin-right: 30px;">
             <a class="nav-link" href="{% url 'appRadical:contact' %}" style="color: #ffffff; Font-family: Lemonada;">CONTACT US </a>
           </li>
+
+            {% if user.is_authenticated %}
+             <li class="nav-item" style="margin-right: 30px;">
+                 <a class="nav-link" href="{% url 'appRadical:contact' %}" style="color: #ffffff; Font-family: Dosis;"><small>Logged In as : {{user.username}}</small></a>
+             </li>
+             <li style="float: right; margin-right: 30px;">
+              <a href="{% url 'appRadical:logout' %}" class="nav-link btn btn-outline-secondary" style="color: #ffffff; Font-family: Lemonada;">SIGN OUT</a>
+             </li>
+
+            {% else %}
+             <li style="float: right; margin-right: 30px;">
+              <a href="{% url 'appRadical:login' %}" class="nav-link btn btn-outline-secondary" style="color: #ffffff; Font-family: Lemonada;">SIGN IN</a>
+             </li>
+            <li style="float: right; margin-right: 30px;">
+              <a href="{% url 'appRadical:register' %}" class="nav-link btn btn-outline-secondary" style="color: #ffffff; Font-family: Lemonada;">SIGN UP</a>
+            </li>
+            {% endif %}
         </ul>
       </div>
   </div>
