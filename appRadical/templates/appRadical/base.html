@@ -126,7 +126,7 @@
 
             {% if user.is_authenticated %}
              <li class="nav-item" style="margin-right: 30px;">
-                 <a class="nav-link" href="{% url 'appRadical:contact' %}" style="color: #ffffff; Font-family: Dosis;"><small>Logged In as : {{user.username}}</small></a>
+                 <a class="nav-link" href="{% url 'appRadical:contact' %}" style="color: #ffffff; Font-family: Dosis;"><small>Signed In as : {{user.username}}</small></a>
              </li>
              <li style="float: right; margin-right: 30px;">
               <a href="{% url 'appRadical:logout' %}" class="nav-link btn btn-outline-secondary" style="color: #ffffff; Font-family: Lemonada;">SIGN OUT</a>

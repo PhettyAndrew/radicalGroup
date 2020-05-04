@@ -33,8 +33,13 @@ def login_user(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
-        login(request, user)
-        return redirect('appRadical:index')
+        if user:
+            login(request, user)
+            return redirect('appRadical:index')
+        else:
+            message = {'message': 'Invalid Credentials'}
+            return render(request, 'appRadical/login.html', message)
+        #return render(request, 'appRadical/login.html')
     return render(request, 'appRadical/login.html')
 
 

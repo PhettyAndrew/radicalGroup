@@ -30,6 +30,11 @@
             <div class="card card-body" style="margin: 20px; border-color: DarkRed">
                 <h3 style="text-align: center; margin:10px; font-family: Lora;">USER LOGIN FORM</h3>
                 <hr>
+                {% if message %}
+                <div class="alert alert-danger">
+                    <h4>{{message}}</h4>
+                </div>
+                {% endif %}
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <div class="form-group">
