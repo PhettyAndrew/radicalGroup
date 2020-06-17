@@ -3,6 +3,7 @@ from .models import Building, Plan, Team
 from .forms import FormUser, ContactForm, PurchaseForm
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 # mpesa_api imports
 from django.http import HttpResponse
@@ -39,7 +40,6 @@ def login_user(request):
         else:
             message = {'message': 'Invalid Credentials'}
             return render(request, 'appRadical/login.html', message)
-        #return render(request, 'appRadical/login.html')
     return render(request, 'appRadical/login.html')
 
 
@@ -68,11 +68,22 @@ def about(request):
     return render(request, 'appRadical/about.html', context)
 
 
-def plan(request):
+def building_plan(request):
     infoBuild = Building.objects.order_by("description")
-    infoPlan = Plan.objects.order_by("building")
+    #query = request.GET.get('q', '')
+    #if query:
+    #   qset = (
+    #       Q(buildingType__icontains=query) |
+    #       Q(cost__icontains=query) |
+    #       Q(size__icontains=query)
+    #   )
+    #   results = Building.objects.filter(qset).distinct()
+    #else:
+    #   results = []
     context = {
-        'infoBuild': infoBuild
+        'infoBuild': infoBuild,
+        #'results': results,
+        #'query': query,
     }
     return render(request, 'appRadical/building.html', context)
 
@@ -109,26 +120,37 @@ def lipa_na_mpesa_online(request, purchase_id):
     if request.method == 'POST':
         form = PurchaseForm(request.POST or None)
         if form.is_valid():
-            form.save()
-            access_token = MpesaAccessToken.validated_mpesa_access_token
-            api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
-            headers = {"Authorization": "Bearer %s" % access_token}
-            request = {
-                "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,
-                "Password": LipanaMpesaPpassword.decode_password,
-                "Timestamp": LipanaMpesaPpassword.lipa_time,
-                "TransactionType": "CustomerPayBillOnline",
-                "Amount": building.cost,
-                "PartyA": 254 + form.cleaned_data['phone_number'],  # replace with your phone number to get stk push
-                "PartyB": LipanaMpesaPpassword.Business_short_code,
-                "PhoneNumber": 254 + form.cleaned_data['phone_number'],
-                # replace with your phone number to get stk push
-                "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
-                "AccountReference": "Radical Group",
-                "TransactionDesc": "Building Plan Purchase."
-            }
-            response = requests.post(api_url, json=request, headers=headers)
-            return HttpResponse("Success")
+            form.save(commit=False)
+            if len(str(form.cleaned_data['phone_number'])) == 12:
+                form.save()
+                access_token = MpesaAccessToken.validated_mpesa_access_token
+                api_url = "https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest"
+                headers = {"Authorization": "Bearer %s" % access_token}
+                request = {
+                    "BusinessShortCode": LipanaMpesaPpassword.Business_short_code,
+                    "Password": LipanaMpesaPpassword.decode_password,
+                    "Timestamp": LipanaMpesaPpassword.lipa_time,
+                    "TransactionType": "CustomerPayBillOnline",
+                    "Amount": building.cost,
+                    "PartyA": form.cleaned_data['phone_number'],  # replace with your phone number to get stk push
+                    "PartyB": LipanaMpesaPpassword.Business_short_code,
+                    "PhoneNumber": form.cleaned_data['phone_number'],  # replace with your phone number to get stk push
+                    "CallBackURL": "https://sandbox.safaricom.co.ke/mpesa/",
+                    "AccountReference": "Radical Group",
+                    "TransactionDesc": "Building Plan Purchase."
+                }
+                response = requests.post(api_url, json=request, headers=headers)
+                success = {
+                    'success': HttpResponse(response),
+                }
+                return render(request, 'appRadical/purchase.html', success)
+            else:
+                error = {
+                    'error': 'Enter the correct number format! e.g. 254700000000',
+                    'form': form,
+                }
+                return render(request, 'appRadical/purchase.html', error)
+
     else:
         form = PurchaseForm()
     context = {

@@ -24,7 +24,7 @@ class Contact(models.Model):
 
 # Team
 class Team(models.Model):
-    photo = models.ImageField()
+    photo = models.ImageField(default="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0a/Gnome-stock_person.svg/1024px-Gnome-stock_person.svg.png")
     name = models.CharField(max_length=40)
     title = models.CharField(max_length=40)
     facebook_link = models.URLField()

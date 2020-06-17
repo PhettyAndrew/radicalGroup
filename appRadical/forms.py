@@ -19,7 +19,7 @@ class PurchaseForm(forms.ModelForm):
         model = Purchase
         widgets = {
             'client_name': forms.TextInput(attrs={'placeholder': 'Client Name'}),
-            'phone_number': forms.TextInput(attrs={'placeholder': 'Phone Number'}),
+            'phone_number': forms.TextInput(attrs={'placeholder': 'Phone Number eg. 2547000000'}),
             'email': forms.TextInput(attrs={'placeholder': 'Email Address'}),
         }
         fields = ['client_name', 'phone_number', 'email']

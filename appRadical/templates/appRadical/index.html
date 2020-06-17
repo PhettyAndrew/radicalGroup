@@ -10,7 +10,7 @@
       </ol>
       <div class="carousel-item text-center text-light mb-5 {% if forloop.first %} active{% endif %}">
         <a href="{% url 'appRadical:building_details' infoBuild.id %}">
-          <img data-toggle="tooltip" title="Click Me to View My Building Plan" style="height: 600px;" class="d-block w-100" src="{{infoBuild.buildingImage.url}}" alt="First slide">
+          <img data-toggle="tooltip" title="Click Me to View My Building Plan" style="height: 600px;" class="d-block w-100" src="{{infoBuild.buildingImage.url}}" alt="Slide">
         </a>
         <div class="carousel-caption d-none d-md-block" style="position: absolute; bottom: 10%; left: 50%; transform: translate(-50%, -50%);">
           <a href="{% url 'appRadical:building_details' infoBuild.id %}" role="button" data-target="#" style="Font-family: Jura;" type="submit" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="{{infoBuild.description}}">
@@ -36,7 +36,7 @@
 <div class="container-fluid" style="text-align: center; margin-top: 20px;">
   <div class="row" style="display: inline-block;">
     <h4 style="color: #800000; Font-family: Permanent Marker;">RADICAL GROUP</h4>
-    <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>The Unsurpassed Plan Merchandising<br> Company. We Love What We Do.</i> </h4>
+    <h4 style="Font-family: Playfair Display; margin-top: 10px;"><i>The Unsurpassed Plan Merchandising<br> Company. <b>We Love What We Do</b>.</i> </h4>
   </div>
   <div class="row" style="margin-top: 50px; margin-left: 100px; margin-right: 100px;">
     <div class="col-sm-6" style="margin-top: 10px;">

@@ -16,6 +16,20 @@
     </div>
 </div>
 
+<div class="container" style="margin-top: 30px;">
+    <div class="row" style="Text-align: center;">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6" style="display: inline-block;">
+            <p><small style="Font-family: Dosis; color: #800000;">*Search for Building in terms of Type, Cost or Size*</small></p>
+            <form method="get" action="/building_plan/" class="form-inline ">
+              <input style="width: 80%; Font-family: Dosis;" class="form-control mr-sm-2" type="text" placeholder="Search for a Building Plan" aria-label="Search" name="q" value="{{ query|escape }}">
+              <button style="Font-family: Jura;" class="btn btn-outline-success my-2 my-sm-0" type="submit">SEARCH</button>
+            </form>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+
 <div class="container" style="margin-top: 50px;">
     <div class="row">
         {% for infoBuild in infoBuild %}
